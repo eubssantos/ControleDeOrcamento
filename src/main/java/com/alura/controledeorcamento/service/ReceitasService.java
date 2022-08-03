@@ -13,7 +13,8 @@ public class ReceitasService {
     @Autowired
     ReceitasRepository receitasRepository;
 
-    public List<Receitas> listagemDeReceitas() {
-        return receitasRepository.findAll();
+    public List<Receitas> getAll() {
+        List<Receitas> lista = receitasRepository.findAll();
+        return lista;
     }
 }
