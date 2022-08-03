@@ -1,6 +1,7 @@
-package com.alura.controledeorcamento.entity;
+package com.alura.controledeorcamento.repository.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -12,11 +13,13 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-public class Receitas {
+@NoArgsConstructor
+public class Despesas {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String descricao;
     private Double valor;
     private LocalDate data;
