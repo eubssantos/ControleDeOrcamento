@@ -1,4 +1,4 @@
-package com.alura.controledeorcamento.repository.entity;
+package com.alura.controledeorcamento.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Receitas {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String descricao;
