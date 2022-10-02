@@ -31,8 +31,8 @@ public class DespesaService {
         return despesaRepository.findById(documentId);
     }
 
-    public List<DespesaDTO> listagemDeDespesas() {
-        List<Despesa> despesas = despesaRepository.findAll();
+    public List<DespesaDTO> listagemDeDespesas(String searchDescricao) {
+        List<Despesa> despesas = despesaRepository.findAllDespesas(searchDescricao);
         return DespesaDTO.convert(despesas);
     }
 

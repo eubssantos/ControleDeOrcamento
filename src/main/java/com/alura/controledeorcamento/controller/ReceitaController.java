@@ -27,8 +27,8 @@ public class ReceitaController {
     }
 
     @GetMapping("listagemDeReceitas")
-    public ResponseEntity<?> listagemDeReceitas() {
-        return ResponseEntity.ok((receitaService.listagemDeReceitas()));
+    public ResponseEntity<?> listagemDeReceitas(@RequestParam(defaultValue = "") String searchDescricao) {
+        return ResponseEntity.ok((receitaService.listagemDeReceitas(searchDescricao)));
     }
 
     @PutMapping("editarReceita/{receitaId}")

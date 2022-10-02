@@ -31,8 +31,8 @@ public class ReceitaService {
         return receitaRepository.findById(receitaId);
     }
 
-    public List<ReceitaDTO> listagemDeReceitas() {
-        List<Receita> receitas = receitaRepository.findAll();
+    public List<ReceitaDTO> listagemDeReceitas(String searchDescricao) {
+        List<Receita> receitas = receitaRepository.findAllReceitas(searchDescricao);
         return ReceitaDTO.convert(receitas);
     }
 

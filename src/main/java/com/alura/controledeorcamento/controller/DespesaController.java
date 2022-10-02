@@ -27,8 +27,8 @@ public class DespesaController {
     }
 
     @GetMapping("listagemDeDespesas")
-    public ResponseEntity<?> listagemDeDespesas() {
-        return ResponseEntity.ok((despesaService.listagemDeDespesas()));
+    public ResponseEntity<?> listagemDeDespesas(@RequestParam(defaultValue = "") String searchDescricao) {
+        return ResponseEntity.ok((despesaService.listagemDeDespesas(searchDescricao)));
     }
 
     @PutMapping("editarDespesa/{despesaId}")
