@@ -1,13 +1,14 @@
 package com.alura.controledeorcamento.service;
 
-import com.alura.controledeorcamento.commands.inputs.receita.CreateReceitaCommands;
-import com.alura.controledeorcamento.commands.inputs.receita.UpdateReceitaCommand;
-import com.alura.controledeorcamento.commands.outputs.ReceitaDTO;
+import com.alura.controledeorcamento.commands.ReceitaCommand.inputs.CreateReceitaCommands;
+import com.alura.controledeorcamento.commands.ReceitaCommand.inputs.UpdateReceitaCommand;
+import com.alura.controledeorcamento.commands.ReceitaCommand.outputs.ReceitaDTO;
 import com.alura.controledeorcamento.entity.Receita;
 import com.alura.controledeorcamento.repository.ReceitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.ValidationException;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,11 +21,15 @@ public class ReceitaService {
     private void salvarReceita(Receita receita) {receitaRepository.save(receita);}
 
     public ReceitaDTO criarReceita(CreateReceitaCommands command) {
+        boolean receitaJaCadastradaNoMes = receitaRepository.isReceitaJaCadastrada(command.getDescricao(), command.getData().getMonthValue(), command.getData().getYear());
+        if(receitaJaCadastradaNoMes) {
+            throw new ValidationException("Receita já cadastrada no mês!");
+        }
+
         Receita receita = new Receita(command);
         this.salvarReceita(receita);
 
-        ReceitaDTO dto = new ReceitaDTO(receita);
-        return dto;
+        return new ReceitaDTO(receita);
     }
 
     public Optional<Receita> detalhamentoDeReceita(Long receitaId)  {
@@ -45,9 +50,14 @@ public class ReceitaService {
         receita.setDescricao(command.getDescricao());
         receita.setData(command.getData());
         receita.setValor(command.getValor());
+
+        boolean receitaJaCadastradaNoMes = receitaRepository.isReceitaJaCadastrada(receita.getDescricao(), receita.getData().getMonthValue(), receita.getData().getYear());
+        if(receitaJaCadastradaNoMes) {
+            throw new ValidationException("Receita já cadastrada no mês!");
+        }
+
         this.salvarReceita(receita);
 
-        ReceitaDTO dto = new ReceitaDTO(receita);
-        return dto;
+        return new ReceitaDTO(receita);
     }
 }

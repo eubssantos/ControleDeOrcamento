@@ -1,4 +1,4 @@
-package com.alura.controledeorcamento.commands.outputs;
+package com.alura.controledeorcamento.commands.ReceitaCommand.outputs;
 
 import com.alura.controledeorcamento.entity.Receita;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.alura.controledeorcamento.controller;
 
-import com.alura.controledeorcamento.commands.inputs.despesa.CreateDespesaCommand;
-import com.alura.controledeorcamento.commands.inputs.despesa.UpdateDespesaCommand;
+import com.alura.controledeorcamento.commands.DespesaCommand.inputs.CreateDespesaCommand;
+import com.alura.controledeorcamento.commands.DespesaCommand.inputs.UpdateDespesaCommand;
 import com.alura.controledeorcamento.service.DespesaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,6 +1,6 @@
 package com.alura.controledeorcamento.entity;
 
-import com.alura.controledeorcamento.commands.inputs.receita.CreateReceitaCommands;
+import com.alura.controledeorcamento.commands.ReceitaCommand.inputs.CreateReceitaCommands;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

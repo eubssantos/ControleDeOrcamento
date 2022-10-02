@@ -1,6 +1,7 @@
-package com.alura.controledeorcamento.commands.outputs;
+package com.alura.controledeorcamento.commands.DespesaCommand.outputs;
 
 import com.alura.controledeorcamento.entity.Despesa;
+import com.alura.controledeorcamento.enums.Categorias;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,12 +16,14 @@ public class DespesaDTO {
     private String descricao;
     private LocalDate data;
     private double valor;
+    private Categorias categoria;
 
     public DespesaDTO(Despesa despesa) {
         this.despesaId = despesa.getDespesaId();
         this.descricao = despesa.getDescricao();
         this.data = despesa.getData();
         this.valor = despesa.getValor();
+        this.categoria = despesa.getCategoria();
     }
 
     public static List<DespesaDTO> convert(List<Despesa> despesas) {

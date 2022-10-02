@@ -1,7 +1,7 @@
 package com.alura.controledeorcamento.controller;
 
-import com.alura.controledeorcamento.commands.inputs.receita.CreateReceitaCommands;
-import com.alura.controledeorcamento.commands.inputs.receita.UpdateReceitaCommand;
+import com.alura.controledeorcamento.commands.ReceitaCommand.inputs.CreateReceitaCommands;
+import com.alura.controledeorcamento.commands.ReceitaCommand.inputs.UpdateReceitaCommand;
 import com.alura.controledeorcamento.service.ReceitaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
