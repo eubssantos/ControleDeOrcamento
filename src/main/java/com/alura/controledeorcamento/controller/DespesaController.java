@@ -3,7 +3,7 @@ package com.alura.controledeorcamento.controller;
 import com.alura.controledeorcamento.commands.DespesaCommand.inputs.CreateDespesaCommand;
 import com.alura.controledeorcamento.commands.DespesaCommand.inputs.UpdateDespesaCommand;
 import com.alura.controledeorcamento.service.DespesaService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +11,10 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("despesa")
+@RequiredArgsConstructor
 public class DespesaController {
 
-    @Autowired
-    private DespesaService despesaService;
+    private final DespesaService despesaService;
 
     @PostMapping("criarDespesa")
     public ResponseEntity<?> criarDespesa(@RequestBody @Valid CreateDespesaCommand command) {
@@ -30,6 +30,14 @@ public class DespesaController {
     public ResponseEntity<?> listagemDeDespesas(@RequestParam(defaultValue = "") String searchDescricao) {
         return ResponseEntity.ok((despesaService.listagemDeDespesas(searchDescricao)));
     }
+
+    @GetMapping("listagemDeDespesasPorMes/{mes}/{ano}")
+    public ResponseEntity<?> listagemDeDespesasPorMes(
+            @PathVariable int mes,
+            @PathVariable int ano) {
+        return ResponseEntity.ok((despesaService.listagemDeDespesasPorMes(mes, ano)));
+    }
+
 
     @PutMapping("editarDespesa/{despesaId}")
     public ResponseEntity<?> editarDespesa(

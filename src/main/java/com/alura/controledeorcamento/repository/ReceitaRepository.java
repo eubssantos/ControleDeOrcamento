@@ -16,5 +16,8 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     @Query("SELECT CASE WHEN COUNT(r) > 0 THEN TRUE ELSE FALSE END FROM Receita r WHERE r.descricao = :descricao AND MONTH(r.data) = :mes AND YEAR(r.data) = :ano")
     boolean isReceitaJaCadastrada(String descricao, int mes, int ano);
 
+    @Query(value = "SELECT * FROM challange.receita r WHERE MONTH(r.data) = ?1 AND YEAR(r.data) = ?2", nativeQuery = true)
+    List<Receita> listagemDeReceitasPorMes(int mes, int ano);
+
     Receita findReceitaByReceitaId(Long receitaId);
 }

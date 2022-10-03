@@ -5,7 +5,7 @@ import com.alura.controledeorcamento.commands.DespesaCommand.inputs.UpdateDespes
 import com.alura.controledeorcamento.commands.DespesaCommand.outputs.DespesaDTO;
 import com.alura.controledeorcamento.entity.Despesa;
 import com.alura.controledeorcamento.repository.DespesaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ValidationException;
@@ -15,10 +15,10 @@ import java.util.Optional;
 import static com.alura.controledeorcamento.enums.Categorias.OUTRAS;
 
 @Service
+@RequiredArgsConstructor
 public class DespesaService {
 
-    @Autowired
-    private DespesaRepository despesaRepository;
+    private final DespesaRepository despesaRepository;
 
     private void salvarDespesa(Despesa despesa) {despesaRepository.save(despesa);}
 
@@ -68,4 +68,8 @@ public class DespesaService {
         return new DespesaDTO(despesa);
     }
 
+    public List<DespesaDTO> listagemDeDespesasPorMes(int mes, int ano) {
+        List<Despesa> despesas = despesaRepository.listagemDeDespesasPorMes(mes, ano);
+        return DespesaDTO.convert(despesas);
+    }
 }

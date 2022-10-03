@@ -5,7 +5,7 @@ import com.alura.controledeorcamento.commands.ReceitaCommand.inputs.UpdateReceit
 import com.alura.controledeorcamento.commands.ReceitaCommand.outputs.ReceitaDTO;
 import com.alura.controledeorcamento.entity.Receita;
 import com.alura.controledeorcamento.repository.ReceitaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.validation.ValidationException;
@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ReceitaService {
 
-    @Autowired
-    private ReceitaRepository receitaRepository;
+    private final ReceitaRepository receitaRepository;
 
     private void salvarReceita(Receita receita) {receitaRepository.save(receita);}
 
@@ -59,5 +59,10 @@ public class ReceitaService {
         this.salvarReceita(receita);
 
         return new ReceitaDTO(receita);
+    }
+
+    public List<ReceitaDTO> listagemDeReceitasPorMes(int mes, int ano) {
+        List<Receita> receitas = receitaRepository.listagemDeReceitasPorMes(mes, ano);
+        return ReceitaDTO.convert(receitas);
     }
 }
