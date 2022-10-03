@@ -15,13 +15,13 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     List<Receita> findAllReceitas(String searchDescricao);
 
     @Query("SELECT CASE WHEN COUNT(r) > 0 THEN TRUE ELSE FALSE END FROM Receita r WHERE r.descricao = :descricao AND MONTH(r.data) = :mes AND YEAR(r.data) = :ano")
-    boolean isReceitaJaCadastrada(String descricao, int mes, int ano);
+    boolean isReceitaJaCadastrada(String descricao, Integer mes, Integer ano);
 
     @Query(value = "SELECT * FROM challange.receita r WHERE MONTH(r.data) = ?1 AND YEAR(r.data) = ?2", nativeQuery = true)
-    List<Receita> listagemDeReceitasPorMes(int mes, int ano);
+    List<Receita> listagemDeReceitasPorMes(Integer mes, Integer ano);
 
     @Query(value = "SELECT SUM(valor) FROM receita r WHERE MONTH(r.data) = ?1 AND YEAR(r.data) = ?2", nativeQuery = true)
-    BigDecimal valorTotalReceitasNoMes(int mes, int ano);
+    BigDecimal valorTotalReceitasNoMes(Integer mes, Integer ano);
 
     Receita findReceitaByReceitaId(Long receitaId);
 }

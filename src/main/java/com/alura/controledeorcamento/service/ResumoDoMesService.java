@@ -17,7 +17,7 @@ public class ResumoDoMesService {
     private final DespesaRepository despesaRepository;
     private final ReceitaRepository receitaRepository;
 
-    public ResumoDTO resumoDoMes(int mes, int ano) {
+    public ResumoDTO resumoDoMes(Integer mes, Integer ano) {
         BigDecimal valorTotalReceitas = receitaRepository.valorTotalReceitasNoMes(mes, ano);
         BigDecimal valorTotalDespesas = despesaRepository.valorTotalDespesasNoMes(mes, ano);
         BigDecimal saldoFinal = valorTotalReceitas.subtract(valorTotalDespesas);

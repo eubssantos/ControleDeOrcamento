@@ -13,7 +13,7 @@ public class ResumoDoMesController {
     private final ResumoDoMesService resumoDoMesService;
 
     @GetMapping("/{mes}/{ano}")
-    public ResponseEntity<?> resumoDoMes(@PathVariable int mes, @PathVariable int ano) {
+    public ResponseEntity<?> resumoDoMes(@PathVariable Integer mes, @PathVariable Integer ano) {
         return ResponseEntity.ok(resumoDoMesService.resumoDoMes(mes, ano));
     }
 }

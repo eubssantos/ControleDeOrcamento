@@ -33,8 +33,8 @@ public class ReceitaController {
 
     @GetMapping("listagemDeReceitasPorMes/{mes}/{ano}")
     public ResponseEntity<?> listagemDeReceitasPorMes(
-            @PathVariable int mes,
-            @PathVariable int ano) {
+            @PathVariable Integer mes,
+            @PathVariable Integer ano) {
         return ResponseEntity.ok((receitaService.listagemDeReceitasPorMes(mes, ano)));
     }
 

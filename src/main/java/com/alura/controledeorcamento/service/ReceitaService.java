@@ -61,7 +61,7 @@ public class ReceitaService {
         return new ReceitaDTO(receita);
     }
 
-    public List<ReceitaDTO> listagemDeReceitasPorMes(int mes, int ano) {
+    public List<ReceitaDTO> listagemDeReceitasPorMes(Integer mes, Integer ano) {
         List<Receita> receitas = receitaRepository.listagemDeReceitasPorMes(mes, ano);
         return ReceitaDTO.convert(receitas);
     }

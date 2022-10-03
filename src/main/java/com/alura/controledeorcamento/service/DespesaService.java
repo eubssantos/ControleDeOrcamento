@@ -68,7 +68,7 @@ public class DespesaService {
         return new DespesaDTO(despesa);
     }
 
-    public List<DespesaDTO> listagemDeDespesasPorMes(int mes, int ano) {
+    public List<DespesaDTO> listagemDeDespesasPorMes(Integer mes, Integer ano) {
         List<Despesa> despesas = despesaRepository.listagemDeDespesasPorMes(mes, ano);
         return DespesaDTO.convert(despesas);
     }
